@@ -52,7 +52,7 @@ Esca is a serious fungal disease that affects grapevines, causing significant da
   - **Accuracy**: The overall model accuracy is 92%, so the model correctly predicts both Esca and healthy leaves 92% of the time.
 
 - **This leaf does not show signs of an Esca infection**:
-  - **Precision**: 0.99. This means that when the model predicts healthy, it is correct 99% of the time. Thus, there is a 99% chance that your vine is truly free of Esca if the model indicates so.
+  - **Precision**: 0.99. This means that when the model predicts healthy, it is correct 99% of the time. Thus, there is a 99% chance that your vine is truly healthy if the model indicates so.
   - **Accuracy**: The overall model accuracy is 92%, so the model correctly predicts both Esca and healthy leaves 92% of the time.
 """)
 
