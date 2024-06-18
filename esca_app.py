@@ -1,4 +1,3 @@
-import json
 import streamlit as st
 import tensorflow as tf
 from huggingface_hub import hf_hub_download
@@ -27,16 +26,8 @@ model_filename = "grapeleaf_classifier.keras"
 
 model_file = hf_hub_download(repo_id=model_id, filename=model_filename)
 
-# Load the Keras model with modified configuration
-def custom_load_model(model_path, custom_objects=None):
-    with open(model_path, 'r') as f:
-        config = json.load(f)
-    if 'batch_shape' in config:
-        config['input_shape'] = config.pop('batch_shape')[1:]
-    model = tf.keras.models.model_from_config(config, custom_objects=custom_objects)
-    return model
-
-model = custom_load_model(model_file, custom_objects={"focal_loss_fixed": focal_loss()})
+# Load the Keras model directly
+model = load_model(model_file, custom_objects={"focal_loss_fixed": focal_loss()}, compile=False)
 
 # Compile the model after loading
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.0001, clipvalue=1.0)
