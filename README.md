@@ -18,7 +18,7 @@ pip install streamlit tensorflow huggingface-hub pillow numpy
 
 ## Usage
 
-1. Clone the repository or download the code files.
+1. Clone the repository or download the code file.
 2. Navigate to the project directory.
 3. Run the following command to start the Streamlit app:
 ```
@@ -40,7 +40,7 @@ streamlit run esca_app.py
 
 ## Model Details
 
-The pre-trained model used in this application was trained on a dataset of grapevine leaf images, both healthy and infected with Esca disease. The model achieved the following performance metrics:
+The pre-trained model used in this application was trained on a dataset of [grapevine leaf images](https://www.kaggle.com/datasets/rm1000/grape-disease-dataset-original), both healthy and infected with Esca and otherdisease. The model achieved the following performance metrics:
 
 - **Precision (Esca)**: 0.79. When the model predicts Esca, it is correct 79% of the time.
 - **Precision (Healthy)**: 0.99. When the model predicts healthy, it is correct 99% of the time.
