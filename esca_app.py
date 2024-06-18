@@ -1,7 +1,7 @@
 import streamlit as st
 import tensorflow as tf
 from huggingface_hub import hf_hub_download
-from tensorflow.keras.models import load_model, model_from_config
+from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import get_custom_objects
 from PIL import Image
 import numpy as np
@@ -26,15 +26,8 @@ model_filename = "grapeleaf_classifier.keras"
 
 model_file = hf_hub_download(repo_id=model_id, filename=model_filename)
 
-# Load the model configuration
-with open(model_file, 'rb') as f:
-    model_config = f.read()
-
-# Modify the configuration to replace `batch_shape` with `input_shape`
-model_config = model_config.replace(b'"batch_shape":', b'"input_shape":').replace(b'[null,', b'[')
-
-# Load the modified model
-model = model_from_config(model_config, custom_objects={"focal_loss_fixed": focal_loss()})
+# Load the Keras model
+model = load_model(model_file, custom_objects={"focal_loss_fixed": focal_loss()}, compile=False)
 
 # Compile the model after loading
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.0001, clipvalue=1.0)
@@ -59,7 +52,7 @@ Esca is a serious fungal disease that affects grapevines, causing significant da
   - **Accuracy**: The overall model accuracy is 92%, so the model correctly predicts both Esca and healthy leaves 92% of the time.
 
 - **This leaf does not show signs of an Esca infection**:
-  - **Precision**: 0.99. This means that when the model predicts healthy, it is correct 99% of the time. Thus, there is a 99% chance that your vine is truly healthy if the model indicates so.
+  - **Precision**: 0.99. This means that when the model predicts healthy, it is correct 99% of the time. Thus, there is a 99% chance that your vine is truly free of Esca if the model indicates so.
   - **Accuracy**: The overall model accuracy is 92%, so the model correctly predicts both Esca and healthy leaves 92% of the time.
 """)
 
