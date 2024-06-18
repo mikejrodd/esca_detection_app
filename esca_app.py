@@ -1,7 +1,7 @@
 import streamlit as st
 import tensorflow as tf
 from huggingface_hub import hf_hub_download
-from tensorflow.keras.models import model_from_json
+from tensorflow.keras.models import load_model, model_from_config
 from tensorflow.keras.utils import get_custom_objects
 from PIL import Image
 import numpy as np
@@ -26,15 +26,15 @@ model_filename = "grapeleaf_classifier.keras"
 
 model_file = hf_hub_download(repo_id=model_id, filename=model_filename)
 
-# Load the model file
-with open(model_file, 'r') as f:
-    model_json = f.read()
+# Load the model configuration
+with open(model_file, 'rb') as f:
+    model_config = f.read()
 
 # Modify the configuration to replace `batch_shape` with `input_shape`
-model_json = model_json.replace('"batch_shape":', '"input_shape":').replace('[null,', '[')
+model_config = model_config.replace(b'"batch_shape":', b'"input_shape":').replace(b'[null,', b'[')
 
 # Load the modified model
-model = model_from_json(model_json, custom_objects={"focal_loss_fixed": focal_loss()})
+model = model_from_config(model_config, custom_objects={"focal_loss_fixed": focal_loss()})
 
 # Compile the model after loading
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.0001, clipvalue=1.0)
