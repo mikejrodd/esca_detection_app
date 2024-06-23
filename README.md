@@ -48,6 +48,13 @@ The pre-trained model used in this application was trained on a dataset of [grap
 
 The model uses a custom focal loss function to handle the class imbalance in the training data.
 
+## UI
+
+![Uploading Screenshot 2024-06-23 at 12.47.52 PM.png…]()
+
+<img width="341" alt="Screenshot 2024-06-23 at 12 48 39 PM" src="https://github.com/mikejrodd/esca_detection_app/assets/137613726/368cc824-e238-458d-91bf-6af613669e92">
+
+
 ## Contributing
 
 Contributions to improve the application or the underlying model are welcome. If you encounter any issues or have suggestions for enhancements, please open an issue or submit a pull request on the project's GitHub repository.
