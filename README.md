@@ -53,27 +53,9 @@ The model uses a custom focal loss function to handle the class imbalance in the
 <img width="1170" alt="Screenshot 2024-06-23 at 12 47 52 PM" src="https://github.com/mikejrodd/esca_detection_app/assets/137613726/1c308a5c-5a08-4bce-9052-bbcdaf619cc8">
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Center Image</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
+<div style="text-align: center;">
     <img width="682" alt="Screenshot 2024-06-23 at 12 48 39 PM" src="https://github.com/mikejrodd/esca_detection_app/assets/137613726/368cc824-e238-458d-91bf-6af613669e92">
-</body>
-</html>
-
+</div>
 
 
 ## Contributing
